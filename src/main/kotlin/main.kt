@@ -1,5 +1,5 @@
 fun main() {
-    val seconds = 400
+    val seconds = 3 * 60 * 60 * 24
     agoToText(seconds)
 }
 
@@ -18,11 +18,14 @@ fun agoToText(time: Int) {
             print("Был(а) в сети $tempTime ${minToMinutesHourToHours(tempTime.toString(), Time.HH)} назад")
         }
 
-        in (Time.DD.value + 1)..(Time.DD.value * 2) ->
+        in (Time.DD.value + 1)..(Time.DD.value) ->
             print("Был(а) в сети сегодня")
 
-        in (Time.DD.value * 2 + 1)..(Time.DD.value * 3) ->
+        in (Time.DD.value + 1)..(Time.DD.value * 2) ->
             print("Был(а) в сети вчера")
+
+        in (Time.DD.value * 2 + 1)..(Time.DD.value * 3) ->
+            print("Был(а) в сети позавчера")
 
         in (Time.DD.value * 3 + 1)..Int.MAX_VALUE ->
             print("Был(а) в сети давно")
